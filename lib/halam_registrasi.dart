@@ -1,52 +1,14 @@
-import 'dart:ui';
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:myapp/src/components/index.dart';
-import 'package:supabase/supabase.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:myapp/auth/auth_state.dart';
-
-import 'package:url_launcher/url_launcher_string.dart';
-import 'package:auth_buttons/auth_buttons.dart';
-
-import 'package:bouncing_widget/bouncing_widget.dart';
-import 'package:intl/intl.dart' hide TextDirection;
-import 'package:collection/collection.dart';
-import 'package:myapp/src/pages/index.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lottie/lottie.dart';
-import 'package:latlng/latlng.dart';
-import 'package:badges/badges.dart';
-import 'package:paged_vertical_calendar/paged_vertical_calendar.dart';
-import 'package:youtube_player_iframe/youtube_player_iframe.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:http/http.dart' as http;
-import 'package:teta_cms/teta_cms.dart';
-import 'package:webviewx/webviewx.dart';
 
-class PageHalamanRegistrasi extends StatefulWidget {
-  const PageHalamanRegistrasi({
-    Key? key,
-  }) : super(key: key);
+class HalamanRegistrasi extends StatefulWidget {
+  const HalamanRegistrasi({super.key});
 
   @override
-  _StateHalamanRegistrasi createState() => _StateHalamanRegistrasi();
+  State<HalamanRegistrasi> createState() => _HalamanRegistrasiState();
 }
 
-class _StateHalamanRegistrasi extends AuthState<PageHalamanRegistrasi>
-    with SingleTickerProviderStateMixin {
-  String email = '0';
-  String password = '0';
-  String status = '0';
-
-  var datasets = <String, dynamic>{};
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
+class _HalamanRegistrasiState extends State<HalamanRegistrasi> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -103,8 +65,8 @@ class _StateHalamanRegistrasi extends AuthState<PageHalamanRegistrasi>
                             children: [
                               Text(r'''Registrasi''',
                                   style: GoogleFonts.poppins(
-                                    textStyle: TextStyle(
-                                      color: const Color(0xFF000000),
+                                    textStyle: const TextStyle(
+                                      color: Color(0xFF000000),
                                       fontWeight: FontWeight.w700,
                                       fontSize: 24,
                                       fontStyle: FontStyle.normal,
@@ -117,8 +79,8 @@ class _StateHalamanRegistrasi extends AuthState<PageHalamanRegistrasi>
                               Text(
                                   r'''Selesaikan langkah ini untuk registrasi''',
                                   style: GoogleFonts.poppins(
-                                    textStyle: TextStyle(
-                                      color: const Color(0xFF000000),
+                                    textStyle: const TextStyle(
+                                      color: Color(0xFF000000),
                                       fontWeight: FontWeight.w400,
                                       fontSize: 14,
                                       fontStyle: FontStyle.normal,
@@ -148,8 +110,8 @@ class _StateHalamanRegistrasi extends AuthState<PageHalamanRegistrasi>
                           padding: EdgeInsets.zero,
                           width: double.maxFinite,
                           height: 50,
-                          decoration: BoxDecoration(
-                            color: const Color(0xFFF0F0F0),
+                          decoration: const BoxDecoration(
+                            color: Color(0xFFF0F0F0),
                             borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(20),
                               topRight: Radius.circular(20),
@@ -186,8 +148,8 @@ class _StateHalamanRegistrasi extends AuthState<PageHalamanRegistrasi>
                               children: [
                                 Text(r'''Nama Lengkap''',
                                     style: GoogleFonts.poppins(
-                                      textStyle: TextStyle(
-                                        color: const Color(0xFF3A4F66),
+                                      textStyle: const TextStyle(
+                                        color: Color(0xFF3A4F66),
                                         fontWeight: FontWeight.w600,
                                         fontSize: 16,
                                         fontStyle: FontStyle.normal,
@@ -203,8 +165,8 @@ class _StateHalamanRegistrasi extends AuthState<PageHalamanRegistrasi>
                                     bottom: 25,
                                   ),
                                   width: double.maxFinite,
-                                  decoration: BoxDecoration(
-                                    color: const Color(0xFFD1D1D1),
+                                  decoration: const BoxDecoration(
+                                    color: Color(0xFFD1D1D1),
                                     borderRadius: BorderRadius.only(
                                       topLeft: Radius.circular(15),
                                       topRight: Radius.circular(15),
@@ -214,11 +176,7 @@ class _StateHalamanRegistrasi extends AuthState<PageHalamanRegistrasi>
                                     border: null,
                                   ),
                                   child: TextField(
-                                    onChanged: (String value) async {
-                                      setState(() {
-                                        email = value;
-                                      });
-                                    },
+                                    onChanged: (String value) async {},
                                     onSubmitted: (String value) async {},
                                     decoration: const InputDecoration(
                                       border: OutlineInputBorder(
@@ -246,14 +204,14 @@ class _StateHalamanRegistrasi extends AuthState<PageHalamanRegistrasi>
                                         ),
                                       ),
                                       hintText: r'''Cth.  Eko Saputra''',
-                                      contentPadding: const EdgeInsets.only(
+                                      contentPadding: EdgeInsets.only(
                                         left: 16,
                                         bottom: 16,
                                       ),
                                     ),
                                     style: GoogleFonts.poppins(
-                                      textStyle: TextStyle(
-                                        color: const Color(0xFF000000),
+                                      textStyle: const TextStyle(
+                                        color: Color(0xFF000000),
                                         fontWeight: FontWeight.w400,
                                         fontSize: 16,
                                         fontStyle: FontStyle.normal,
@@ -272,8 +230,8 @@ class _StateHalamanRegistrasi extends AuthState<PageHalamanRegistrasi>
                                 ),
                                 Text(r'''Email Anda''',
                                     style: GoogleFonts.poppins(
-                                      textStyle: TextStyle(
-                                        color: const Color(0xFF3A4F66),
+                                      textStyle: const TextStyle(
+                                        color: Color(0xFF3A4F66),
                                         fontWeight: FontWeight.w600,
                                         fontSize: 16,
                                         fontStyle: FontStyle.normal,
@@ -289,8 +247,8 @@ class _StateHalamanRegistrasi extends AuthState<PageHalamanRegistrasi>
                                     bottom: 25,
                                   ),
                                   width: double.maxFinite,
-                                  decoration: BoxDecoration(
-                                    color: const Color(0xFFD1D1D1),
+                                  decoration: const BoxDecoration(
+                                    color: Color(0xFFD1D1D1),
                                     borderRadius: BorderRadius.only(
                                       topLeft: Radius.circular(15),
                                       topRight: Radius.circular(15),
@@ -300,11 +258,7 @@ class _StateHalamanRegistrasi extends AuthState<PageHalamanRegistrasi>
                                     border: null,
                                   ),
                                   child: TextField(
-                                    onChanged: (String value) async {
-                                      setState(() {
-                                        email = value;
-                                      });
-                                    },
+                                    onChanged: (String value) async {},
                                     onSubmitted: (String value) async {},
                                     decoration: const InputDecoration(
                                       border: OutlineInputBorder(
@@ -332,14 +286,14 @@ class _StateHalamanRegistrasi extends AuthState<PageHalamanRegistrasi>
                                         ),
                                       ),
                                       hintText: r'''Cth. email@bengkol.id''',
-                                      contentPadding: const EdgeInsets.only(
+                                      contentPadding: EdgeInsets.only(
                                         left: 16,
                                         bottom: 16,
                                       ),
                                     ),
                                     style: GoogleFonts.poppins(
-                                      textStyle: TextStyle(
-                                        color: const Color(0xFF000000),
+                                      textStyle: const TextStyle(
+                                        color: Color(0xFF000000),
                                         fontWeight: FontWeight.w400,
                                         fontSize: 16,
                                         fontStyle: FontStyle.normal,
@@ -358,8 +312,8 @@ class _StateHalamanRegistrasi extends AuthState<PageHalamanRegistrasi>
                                 ),
                                 Text(r'''No  HandPhone''',
                                     style: GoogleFonts.poppins(
-                                      textStyle: TextStyle(
-                                        color: const Color(0xFF3A4F66),
+                                      textStyle: const TextStyle(
+                                        color: Color(0xFF3A4F66),
                                         fontWeight: FontWeight.w600,
                                         fontSize: 16,
                                         fontStyle: FontStyle.normal,
@@ -375,8 +329,8 @@ class _StateHalamanRegistrasi extends AuthState<PageHalamanRegistrasi>
                                     bottom: 25,
                                   ),
                                   width: double.maxFinite,
-                                  decoration: BoxDecoration(
-                                    color: const Color(0xFFD1D1D1),
+                                  decoration: const BoxDecoration(
+                                    color: Color(0xFFD1D1D1),
                                     borderRadius: BorderRadius.only(
                                       topLeft: Radius.circular(15),
                                       topRight: Radius.circular(15),
@@ -414,13 +368,13 @@ class _StateHalamanRegistrasi extends AuthState<PageHalamanRegistrasi>
                                         ),
                                       ),
                                       hintText: r'''Cth. 08xxxx''',
-                                      contentPadding: const EdgeInsets.only(
+                                      contentPadding: EdgeInsets.only(
                                         left: 16,
                                       ),
                                     ),
                                     style: GoogleFonts.poppins(
-                                      textStyle: TextStyle(
-                                        color: const Color(0xFF000000),
+                                      textStyle: const TextStyle(
+                                        color: Color(0xFF000000),
                                         fontWeight: FontWeight.w400,
                                         fontSize: 16,
                                         fontStyle: FontStyle.normal,
@@ -439,8 +393,8 @@ class _StateHalamanRegistrasi extends AuthState<PageHalamanRegistrasi>
                                 ),
                                 Text(r'''Password Anda''',
                                     style: GoogleFonts.poppins(
-                                      textStyle: TextStyle(
-                                        color: const Color(0xFF3A4F66),
+                                      textStyle: const TextStyle(
+                                        color: Color(0xFF3A4F66),
                                         fontWeight: FontWeight.w600,
                                         fontSize: 16,
                                         fontStyle: FontStyle.normal,
@@ -456,8 +410,8 @@ class _StateHalamanRegistrasi extends AuthState<PageHalamanRegistrasi>
                                     bottom: 40,
                                   ),
                                   width: double.maxFinite,
-                                  decoration: BoxDecoration(
-                                    color: const Color(0xFFD1D1D1),
+                                  decoration: const BoxDecoration(
+                                    color: Color(0xFFD1D1D1),
                                     borderRadius: BorderRadius.only(
                                       topLeft: Radius.circular(15),
                                       topRight: Radius.circular(15),
@@ -467,11 +421,7 @@ class _StateHalamanRegistrasi extends AuthState<PageHalamanRegistrasi>
                                     border: null,
                                   ),
                                   child: TextField(
-                                    onChanged: (String value) async {
-                                      setState(() {
-                                        password = value;
-                                      });
-                                    },
+                                    onChanged: (String value) async {},
                                     onSubmitted: (String value) async {},
                                     decoration: const InputDecoration(
                                       border: OutlineInputBorder(
@@ -499,13 +449,13 @@ class _StateHalamanRegistrasi extends AuthState<PageHalamanRegistrasi>
                                         ),
                                       ),
                                       hintText: r'''**********''',
-                                      contentPadding: const EdgeInsets.only(
+                                      contentPadding: EdgeInsets.only(
                                         left: 16,
                                       ),
                                     ),
                                     style: GoogleFonts.poppins(
-                                      textStyle: TextStyle(
-                                        color: const Color(0xFF000000),
+                                      textStyle: const TextStyle(
+                                        color: Color(0xFF000000),
                                         fontWeight: FontWeight.w400,
                                         fontSize: 16,
                                         fontStyle: FontStyle.normal,
@@ -525,38 +475,13 @@ class _StateHalamanRegistrasi extends AuthState<PageHalamanRegistrasi>
                                 Padding(
                                   padding: EdgeInsets.zero,
                                   child: GestureDetector(
-                                    onTap: () async {
-                                      if (email != null && password != null) {
-                                        setState(() {
-                                          status = 'Loading';
-                                        });
-                                        final response = await Supabase
-                                            .instance.client.auth
-                                            .signUp(email, password);
-                                        if (response.error != null) {
-                                          setState(() {
-                                            status = 'Failed';
-                                          });
-                                        } else {
-                                          setState(() {
-                                            status = 'Success';
-                                          });
-                                          await Navigator.push<void>(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  PageHalamanLogin(),
-                                            ),
-                                          );
-                                        }
-                                      }
-                                    },
+                                    onTap: () async {},
                                     onLongPress: () async {},
                                     child: Container(
                                         width: double.maxFinite,
                                         height: 48,
-                                        decoration: BoxDecoration(
-                                          color: const Color(0xFF34A853),
+                                        decoration: const BoxDecoration(
+                                          color: Color(0xFF34A853),
                                           borderRadius: BorderRadius.only(
                                             topLeft: Radius.circular(8),
                                             topRight: Radius.circular(8),
@@ -569,8 +494,8 @@ class _StateHalamanRegistrasi extends AuthState<PageHalamanRegistrasi>
                                           child: Text(
                                             'REGISTRASI',
                                             style: GoogleFonts.poppins(
-                                              textStyle: TextStyle(
-                                                color: const Color(0xFFFFFFFF),
+                                              textStyle: const TextStyle(
+                                                color: Color(0xFFFFFFFF),
                                                 fontWeight: FontWeight.w400,
                                                 fontSize: 16,
                                                 fontStyle: FontStyle.normal,
